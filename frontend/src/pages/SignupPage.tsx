@@ -40,38 +40,96 @@ const SignupPage = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignup}>
-        <div>
+    <div
+      style={{
+        textAlign: "center",
+        padding: "40px",
+        maxWidth: "400px",
+        margin: "auto",
+      }}
+    >
+      <h1 style={{ marginBottom: "20px" }}>Sign Up</h1>
+      <form
+        onSubmit={handleSignup}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+          background: "white",
+          padding: "20px",
+          boxShadow: "0px 2px 10px rgba(0,0,0,0.1)",
+          borderRadius: "8px",
+        }}
+      >
+        <div style={{ textAlign: "left" }}>
           <label>Username</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            style={{
+              width: "95%",
+              padding: "8px",
+              marginTop: "5px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
           />
         </div>
-        <div>
+
+        <div style={{ textAlign: "left" }}>
           <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            style={{
+              width: "95%",
+              padding: "8px",
+              marginTop: "5px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
           />
         </div>
-        <div>
+
+        <div style={{ textAlign: "left" }}>
           <label>Confirm Password</label>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            style={{
+              width: "95%",
+              padding: "8px",
+              marginTop: "5px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
           />
         </div>
-        <button type="submit">Sign Up</button>
+
+        <button
+          type="submit"
+          style={{
+            padding: "10px",
+            backgroundColor: "blue",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+            borderRadius: "5px",
+            fontSize: "16px",
+            marginTop: "10px",
+          }}
+        >
+          Sign Up
+        </button>
       </form>
+      <p style={{ marginTop: "10px" }}>Already have an account?</p>
+      <a href="/login">Login</a>
     </div>
   );
 };
