@@ -106,7 +106,18 @@ const Home = () => {
 
       if (response.ok) {
         setEditTask(null);
-        fetchTasks();
+        setTasks((prevTasks) =>
+          prevTasks.map((task) =>
+            task.id === editTask.id
+              ? {
+                  ...task,
+                  title: editTitle,
+                  description: editDescription,
+                  is_complete: currentStatus,
+                }
+              : task
+          )
+        );
       } else {
         alert("Error updating task");
       }

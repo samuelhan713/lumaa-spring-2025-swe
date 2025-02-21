@@ -69,8 +69,10 @@ router.delete("/:id", async (req, res) => {
   try {
     await client.query("DELETE FROM tasks WHERE id = $1 AND user_id = $2", [
       req.params.id,
-      1,
+      req.userId,
     ]);
+    console.log("DELETING IN BACKEND");
+
     res.json({ message: "Task deleted" });
   } catch (err) {
     res.status(500).json({ error: "Database error" });
