@@ -175,8 +175,18 @@ const Home = () => {
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Your Tasks</h1>
-      <button onClick={handleLogout} style={{ marginBottom: "20px" }}>
+      <h1>Task Manager</h1>
+      <button
+        onClick={handleLogout}
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          background: "none",
+          border: "none",
+          textDecoration: "underline",
+        }}
+      >
         Logout
       </button>
 
@@ -185,10 +195,11 @@ const Home = () => {
         style={{
           marginBottom: "20px",
           padding: "10px 20px",
-          backgroundColor: "blue",
+          backgroundColor: "green",
           color: "white",
           border: "none",
           cursor: "pointer",
+          borderRadius: "7px",
         }}
       >
         Create Task
@@ -197,36 +208,71 @@ const Home = () => {
       {tasks.length > 0 ? (
         <div>
           {tasks.map((task) => (
-            <div style={{ marginBottom: "15px" }}>
+            <div
+              key={task.id}
+              style={{
+                width: "60%", // Adjust width as needed
+                margin: "0 auto 15px auto", // Centering and spacing
+                padding: "15px",
+                backgroundColor: "#f4f4f4", // Light gray background
+                borderRadius: "8px",
+                boxShadow: "0px 2px 5px rgba(0,0,0,0.1)", // Subtle shadow
+              }}
+            >
               <h3
                 style={{
                   textDecoration: task.is_complete ? "line-through" : "none",
+                  color: task.is_complete ? "gray" : "black",
                 }}
               >
                 {task.title} {task.is_complete && "✅"}
               </h3>
               <p>{task.description}</p>
-              <button onClick={() => startEditTask(task)}>Edit</button>
-              <button
-                onClick={() => toggleComplete(task.id, task.is_complete)}
-                style={{
-                  marginLeft: "10px",
-                  backgroundColor: task.is_complete ? "green" : "gray",
-                  color: "white",
-                }}
-              >
-                {task.is_complete ? "Mark Incomplete" : "Mark Complete"}
-              </button>
-              <button
-                onClick={() => handleDeleteTask(task.id)}
-                style={{
-                  marginLeft: "10px",
-                  backgroundColor: "red",
-                  color: "white",
-                }}
-              >
-                Delete
-              </button>
+
+              {/* Button Container */}
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <button
+                  onClick={() => startEditTask(task)}
+                  style={{
+                    backgroundColor: "#007bff",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Edit
+                </button>
+
+                <button
+                  onClick={() => toggleComplete(task.id, task.is_complete)}
+                  style={{
+                    backgroundColor: task.is_complete ? "green" : "gray",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {task.is_complete ? "Mark Incomplete" : "Mark Complete"}
+                </button>
+
+                <button
+                  onClick={() => handleDeleteTask(task.id)}
+                  style={{
+                    backgroundColor: "red",
+                    color: "white",
+                    border: "none",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -242,31 +288,77 @@ const Home = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background: "white",
-            padding: "20px",
-            boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
+            padding: "25px",
+            boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
+            borderRadius: "10px",
+            width: "320px",
+            textAlign: "center",
           }}
         >
-          <h2>Create Task</h2>
+          <h2 style={{ marginBottom: "15px", fontSize: "20px" }}>
+            Create Task
+          </h2>
+
           <input
             type="text"
             placeholder="Title"
             value={createTitle}
             onChange={(e) => setCreateTitle(e.target.value)}
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{
+              width: "90%",
+              padding: "8px",
+              marginBottom: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+            }}
           />
+
           <textarea
             placeholder="Description"
             value={createDescription}
             onChange={(e) => setCreateDescription(e.target.value)}
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{
+              width: "90%",
+              padding: "8px",
+              marginBottom: "15px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              resize: "none",
+              height: "80px",
+            }}
           />
-          <button onClick={handleCreateTask}>Create</button>
-          <button
-            onClick={() => setShowCreateModal(false)}
-            style={{ marginLeft: "10px" }}
+
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            Cancel
-          </button>
+            <button
+              onClick={handleCreateTask}
+              style={{
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Create
+            </button>
+
+            <button
+              onClick={() => setShowCreateModal(false)}
+              style={{
+                backgroundColor: "#ccc",
+                color: "black",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       )}
 
