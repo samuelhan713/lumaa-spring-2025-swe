@@ -222,12 +222,12 @@ const Home = () => {
             <div
               key={task.id}
               style={{
-                width: "60%", // Adjust width as needed
-                margin: "0 auto 15px auto", // Centering and spacing
+                width: "60%",
+                margin: "0 auto 15px auto",
                 padding: "15px",
-                backgroundColor: "#f4f4f4", // Light gray background
+                backgroundColor: "#f4f4f4",
                 borderRadius: "8px",
-                boxShadow: "0px 2px 5px rgba(0,0,0,0.1)", // Subtle shadow
+                boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
               }}
             >
               <h3
@@ -240,7 +240,6 @@ const Home = () => {
               </h3>
               <p>{task.description}</p>
 
-              {/* Button Container */}
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <button
                   onClick={() => startEditTask(task)}
@@ -381,31 +380,73 @@ const Home = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background: "white",
-            padding: "20px",
-            boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
+            padding: "25px",
+            boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
+            borderRadius: "10px",
+            width: "320px",
+            textAlign: "center",
           }}
         >
-          <h2>Edit Task</h2>
+          <h2 style={{ marginBottom: "15px", fontSize: "20px" }}>Edit Task</h2>
+
           <input
             type="text"
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{
+              width: "90%",
+              padding: "8px",
+              marginBottom: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+            }}
           />
+
           <textarea
             value={editDescription}
             onChange={(e) => setEditDescription(e.target.value)}
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{
+              width: "90%",
+              padding: "8px",
+              marginBottom: "15px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              resize: "none",
+              height: "80px",
+            }}
           />
-          <button onClick={() => handleEditTask(editTask.is_complete)}>
-            Update
-          </button>
-          <button
-            onClick={() => setEditTask(null)}
-            style={{ marginLeft: "10px" }}
+
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "10px" }}
           >
-            Cancel
-          </button>
+            <button
+              onClick={() => handleEditTask(editTask.is_complete)}
+              style={{
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Update
+            </button>
+
+            <button
+              onClick={() => setEditTask(null)}
+              style={{
+                backgroundColor: "#ccc",
+                color: "black",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       )}
     </div>
