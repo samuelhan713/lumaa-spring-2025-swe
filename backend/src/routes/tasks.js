@@ -4,8 +4,6 @@ import client from "../db.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  console.log("Getting all tasks in the backend...");
-
   try {
     const tasks = await client.query("SELECT * FROM tasks WHERE user_id = $1", [
       req.userId,
@@ -71,7 +69,6 @@ router.delete("/:id", async (req, res) => {
       req.params.id,
       req.userId,
     ]);
-    console.log("DELETING IN BACKEND");
 
     res.json({ message: "Task deleted" });
   } catch (err) {
