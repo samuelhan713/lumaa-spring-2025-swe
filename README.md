@@ -15,3 +15,6 @@
 ## Salary expectations:
 - 6500-7500 USD per month
 
+
+https://github.com/user-attachments/assets/2f0800ab-5f1d-410e-a5d6-f27f2ec30615
+
