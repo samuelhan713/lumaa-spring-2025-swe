@@ -16,5 +16,5 @@
 - 6500-7500 USD per month
 
 
-https://github.com/user-attachments/assets/2f0800ab-5f1d-410e-a5d6-f27f2ec30615
+https://github.com/user-attachments/assets/0538ed8b-a898-4eb4-b20a-50b64edaf85d
 
